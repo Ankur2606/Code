@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alley Shop Cart</title>
+  <style>
+    /* Basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cart-items {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-summary {
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      .cart-container {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be dynamically added here -->
+    </div>
+    <div class="cart-summary">
+      <p>Total: <span id="cartTotal">$0.00</span></p>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    // Sample data - you can replace this with your actual cart items
+    const cartItems = [
+      { name: 'Product 1', price: 19.99 },
+      { name: 'Product 2', price: 29.99 },
+      { name: 'Product 3', price: 39.99 }
+    ];
+
+    // Function to display cart items dynamically
+    function displayCartItems() {
+      const cartContainer = document.getElementById('cartItems');
+      cartContainer.innerHTML = '';
+
+      let totalPrice = 0;
+
+      cartItems.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item');
+
+        const itemName = document.createElement('span');
+        itemName.textContent = item.name;
+
+        const itemPrice = document.createElement('span');
+        itemPrice.textContent = `$${item.price}`;
+
+        cartItemDiv.appendChild(itemName);
+        cartItemDiv.appendChild(itemPrice);
+        cartContainer.appendChild(cartItemDiv);
+
+        totalPrice += item.price;
+      });
+
+      document.getElementById('cartTotal').textContent = `$${totalPrice.toFixed(2)}`;
+    }
+
+    // Function to simulate checkout
+    function checkout() {
+      alert('Proceeding to checkout!');
+    }
+
+    // Display cart items when the page loads
+    window.onload = displayCartItems;
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+        
+      font-family: Arial, sans-serif;
+      background-color:  blanchedalmond;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #login-container {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 5px;
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #error-message {
+      color: #ff4d4d;
+      margin-top: 10px;
+      text-align: center;
+    }
+    a{
+      text-decoration: none;
+      color: white
+    }
+  </style>
+</head>
+<body>
+
+<div id="login-container">
+  <h2>Login</h2>
+  <form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="button" onclick="validateLogin()"><a href="index.html">Login</a></button>
+  </form>
+
+  <div id="error-message"></div>
+</div>
+
+<script>
+  function validateLogin() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var errorMessage = document.getElementById('error-message');
+
+    // Basic validation
+    if (username === '' || password === '') {
+      errorMessage.textContent = 'Please enter both username and password.';
+    }else {
+      // Successful login - redirect or perform desired action
+      errorMessage.textContent = '';
+      alert('Login successful!');
+    }
+  }
+</script>
+
+</body>
+</html>
